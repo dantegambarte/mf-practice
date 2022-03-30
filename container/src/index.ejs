@@ -60,6 +60,21 @@
     </script>
     <% } %>
 
+    <template>
+      <single-spa-router mode="hash">
+        <div class="main-content">
+          <route default>
+            <application name="@icbc/mf-login" loader="loading"></application>
+          </route>
+          <route path="login">
+            <application name="@icbc/mf-login" loader="loading"></application>
+          </route>
+          <route path="main">
+            <application name="@icbc/mf-main" loader="loading"></application>
+          </route>
+        </div>
+      </single-spa-router>
+    </template>
     <!--
     If you need to support Angular applications, uncomment the script tag below to ensure only one instance of ZoneJS is loaded
     Learn more about why at https://single-spa.js.org/docs/ecosystem-angular/#zonejs
@@ -80,8 +95,8 @@
     <noscript> You need to enable JavaScript to run this app. </noscript>
     <main>
       <h1>Hola ke haces toy en ambos mf</h1>
-      <section id="single-spa-application:@icbc/mf-login"></section>
-      <section id="single-spa-application:@icbc/mf-main"></section>
+      <!-- <section id="single-spa-application:@icbc/mf-login"></section>
+      <section id="single-spa-application:@icbc/mf-main"></section> -->
     </main>
     <script>
       System.import("@icbc/root-config");
