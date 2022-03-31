@@ -28,8 +28,8 @@ export class LoginComponent implements OnInit {
 
   openMainMF(): void {
     if (this.form.valid) {
-      localStorage.setItem('authCode', 'Pass');
-      this.router.navigate(['/main']);
+      sessionStorage.setItem('authCode', 'Pass');
+      this.router.navigate(['main']);
     } else {
       this.form.markAllAsTouched();
       console.error('Invalid inputs');

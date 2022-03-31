@@ -1,0 +1,7 @@
+{
+    "imports": {
+        "@icbc/root-config": "//localhost:9000/icbc-root-config.js",
+        "@icbc/mf-login": "//localhost:4200/main.js",
+        "@icbc/mf-main": "//localhost:4201/main.js"
+    }
+}

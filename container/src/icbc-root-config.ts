@@ -1,17 +1,18 @@
 import { registerApplication, start } from "single-spa";
+import {
+  constructApplications,
+  constructRoutes,
+  constructLayoutEngine,
+} from "single-spa-layout";
 
-registerApplication({
-  name: "@icbc/mf-login",
-  app: () => System.import("@icbc/mf-login"),
-  activeWhen: ["/login"],
+const routes = constructRoutes(document.querySelector("#single-spa-layout"));
+const applications = constructApplications({
+  routes,
+  loadApp({ name }) {
+    return System.import(name);
+  },
 });
+const layoutEngine = constructLayoutEngine({ routes, applications });
 
-registerApplication({
-  name: "@icbc/mf-main",
-  app: () => System.import("@icbc/mf-main"),
-  activeWhen: ["/main"],
-});
-
-start({
-  urlRerouteOnly: true,
-});
+applications.forEach(registerApplication);
+start();

@@ -21,7 +21,7 @@ export class AuthGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    const authCode = localStorage.getItem('authCode');
+    const authCode = sessionStorage.getItem('authCode');
     console.log('Se monto pero no esta auth');
     console.log(authCode);
     if (authCode === null) {

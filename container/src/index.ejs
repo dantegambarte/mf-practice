@@ -60,17 +60,17 @@
     </script>
     <% } %>
 
-    <template>
-      <single-spa-router mode="hash">
+    <template id="single-spa-layout">
+      <single-spa-router>
         <div class="main-content">
           <route default>
-            <application name="@icbc/mf-login" loader="loading"></application>
+            <application name="@icbc/mf-login" ></application>
           </route>
           <route path="login">
-            <application name="@icbc/mf-login" loader="loading"></application>
+            <application name="@icbc/mf-login" ></application>
           </route>
           <route path="main">
-            <application name="@icbc/mf-main" loader="loading"></application>
+            <application name="@icbc/mf-main" ></application>
           </route>
         </div>
       </single-spa-router>
@@ -94,9 +94,35 @@
   <body>
     <noscript> You need to enable JavaScript to run this app. </noscript>
     <main>
-      <h1>Hola ke haces toy en ambos mf</h1>
-      <!-- <section id="single-spa-application:@icbc/mf-login"></section>
-      <section id="single-spa-application:@icbc/mf-main"></section> -->
+      <import-map-overrides-full></import-map-overrides-full>
+      <!-- <script>
+        Promise.all([
+          System.import("single-spa"),
+          System.import("single-spa-layout"),
+        ]).then(([singleSpa, singleSpaLayot]) =>{
+          const{
+            constructorApplications,
+            constructorLayoutEngine,
+            constructRoutes
+          } = singleSpaLayot;
+          const{
+            registerApplication,
+            start
+          } = singleSpa;
+          const applications = constructorApplications({
+            loadApp({
+              name
+            }){
+              return System.import(name);
+            }
+          })
+          const layoutEngine = constructorLayoutEngine({
+            applications
+          });
+          applications.forEach(registerApplication);
+          start({});
+        })
+      </script> -->
     </main>
     <script>
       System.import("@icbc/root-config");
